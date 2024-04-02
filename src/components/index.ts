@@ -1,4 +1,6 @@
 import UpcomingEvents from './home/upcoming-events';
 import DealsChart from './home/deals-chart';
 
-export { UpcomingEvents, DealsChart };
+import UpcomingEventsSkeleton from './skeleton/upcoming-events';
+
+export { UpcomingEvents, DealsChart, UpcomingEventsSkeleton };
