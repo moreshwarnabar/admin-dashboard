@@ -93,7 +93,7 @@ export const CompanyContactsTable = () => {
         // gqlQuery is used to specify the GraphQL query that should be used to fetch the data.
         gqlQuery: COMPANY_CONTACTS_TABLE_QUERY,
       },
-    }
+    },
   );
 
   const styles = {
@@ -133,6 +133,7 @@ export const CompanyContactsTable = () => {
         }}
       >
         <Table.Column<Contact>
+          // @ts-ignore
           title="Name"
           dataIndex="name"
           render={(_, record) => (
@@ -157,6 +158,7 @@ export const CompanyContactsTable = () => {
           )}
         />
         <Table.Column<Contact>
+          // @ts-ignore
           title="Title"
           dataIndex="jobTitle"
           filterIcon={<SearchOutlined />}
@@ -167,6 +169,7 @@ export const CompanyContactsTable = () => {
           )}
         />
         <Table.Column<Contact>
+          // @ts-ignore
           title="Stage"
           dataIndex="status"
           // render the status tag for each contact
@@ -184,6 +187,7 @@ export const CompanyContactsTable = () => {
           )}
         />
         <Table.Column<Contact>
+          // @ts-ignore
           dataIndex="id"
           width={112}
           render={(_, record) => (
