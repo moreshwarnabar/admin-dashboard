@@ -19,6 +19,7 @@ import {
   CompanyList,
   Create,
   EditPage,
+  TaskList,
 } from './pages';
 
 import routerBindings, {
@@ -75,6 +76,9 @@ function App() {
                     <Route index element={<CompanyList />} />
                     <Route path="create" element={<Create />} />
                     <Route path="edit/:id" element={<EditPage />} />
+                  </Route>
+                  <Route path="/tasks">
+                    <Route index element={<TaskList />} />
                   </Route>
                 </Route>
               </Routes>
