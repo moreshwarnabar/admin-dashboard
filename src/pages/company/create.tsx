@@ -69,7 +69,7 @@ export const Create = () => {
               {...selectProps}
               options={
                 queryResult?.data?.data.map(u => ({
-                  values: u.id,
+                  value: u.id,
                   label: (
                     <SelectOptionWithAvatar
                       name={u.name}
