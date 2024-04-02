@@ -10,7 +10,7 @@ export const TaskList = () => {
     <KanbanBoardContainer>
       <KanbanBoard>
         <KanbanColumn>
-          <KanbanItem></KanbanItem>
+          <KanbanItem>My First Todo</KanbanItem>
         </KanbanColumn>
         <KanbanColumn></KanbanColumn>
       </KanbanBoard>
