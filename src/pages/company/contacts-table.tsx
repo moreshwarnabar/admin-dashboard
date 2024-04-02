@@ -18,6 +18,7 @@ import { CompanyContactsTableQuery } from '@/graphql/types';
 import { Text } from '@/components/text';
 import CustomAvatar from '@/components/custom-avatar';
 import { ContactStatusTag } from '@/components/tags/contact-status-tag';
+import { Contact } from '@/graphql/schema.types';
 
 export const CompanyContactsTable = () => {
   // get params from the url
@@ -95,13 +96,17 @@ export const CompanyContactsTable = () => {
     }
   );
 
+  const styles = {
+    header: {
+      borderBottom: '1px solid #D9D9D9',
+      marginBottom: '1px',
+    },
+    body: { padding: 0 },
+  };
+
   return (
     <Card
-      headStyle={{
-        borderBottom: '1px solid #D9D9D9',
-        marginBottom: '1px',
-      }}
-      bodyStyle={{ padding: 0 }}
+      styles={styles}
       title={
         <Space size="middle">
           <TeamOutlined />
@@ -127,7 +132,7 @@ export const CompanyContactsTable = () => {
           showSizeChanger: false, // hide the page size changer
         }}
       >
-        <Table.Column
+        <Table.Column<Contact>
           title="Name"
           dataIndex="name"
           render={(_, record) => (
@@ -151,7 +156,7 @@ export const CompanyContactsTable = () => {
             </FilterDropdown>
           )}
         />
-        <Table.Column
+        <Table.Column<Contact>
           title="Title"
           dataIndex="jobTitle"
           filterIcon={<SearchOutlined />}
@@ -161,7 +166,7 @@ export const CompanyContactsTable = () => {
             </FilterDropdown>
           )}
         />
-        <Table.Column
+        <Table.Column<Contact>
           title="Stage"
           dataIndex="status"
           // render the status tag for each contact
@@ -178,7 +183,7 @@ export const CompanyContactsTable = () => {
             </FilterDropdown>
           )}
         />
-        <Table.Column
+        <Table.Column<Contact>
           dataIndex="id"
           width={112}
           render={(_, record) => (

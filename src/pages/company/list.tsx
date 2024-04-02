@@ -1,6 +1,7 @@
 import CustomAvatar from '@/components/custom-avatar';
 import { Text } from '@/components/text';
 import { COMPANIES_LIST_QUERY } from '@/graphql/queries';
+import { Company } from '@/graphql/schema.types';
 import { currencyNumber } from '@/utils';
 import { SearchOutlined } from '@ant-design/icons';
 import {
@@ -53,7 +54,7 @@ export const CompanyList = ({ children }: React.PropsWithChildren) => {
     <div>
       <List breadcrumb={false} headerButtons={headerButtons}>
         <Table {...tableProps} pagination={{ ...tableProps.pagination }}>
-          <Table.Column
+          <Table.Column<Company>
             dataIndex="name"
             title="Company Title"
             defaultFilteredValue={getDefaultFilter('id', filters)}
@@ -74,7 +75,7 @@ export const CompanyList = ({ children }: React.PropsWithChildren) => {
               </Space>
             )}
           />
-          <Table.Column
+          <Table.Column<Company>
             dataIndex="totalRevenue"
             title="Open deals amount"
             render={(value, record) => (
