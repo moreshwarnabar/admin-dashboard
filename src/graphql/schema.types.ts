@@ -1,18 +1,31 @@
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  DateTime: { input: string; output: string; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  DateTime: { input: string; output: string };
 };
 
 export type Audit = {
@@ -114,10 +127,7 @@ export type BooleanFieldComparison = {
 };
 
 /** Business type */
-export type BusinessType =
-  | 'B2B'
-  | 'B2C'
-  | 'B2G';
+export type BusinessType = 'B2B' | 'B2C' | 'B2G';
 
 export type CheckListItem = {
   checked: Scalars['Boolean']['output'];
@@ -152,18 +162,15 @@ export type Company = {
   website?: Maybe<Scalars['String']['output']>;
 };
 
-
 export type CompanyContactsArgs = {
   filter?: ContactFilter;
   paging?: OffsetPaging;
   sorting?: Array<ContactSort>;
 };
 
-
 export type CompanyContactsAggregateArgs = {
   filter?: InputMaybe<ContactAggregateFilter>;
 };
-
 
 export type CompanyDealsArgs = {
   filter?: DealFilter;
@@ -171,18 +178,15 @@ export type CompanyDealsArgs = {
   sorting?: Array<DealSort>;
 };
 
-
 export type CompanyDealsAggregateArgs = {
   filter?: InputMaybe<DealAggregateFilter>;
 };
-
 
 export type CompanyNotesArgs = {
   filter?: CompanyNoteFilter;
   paging?: OffsetPaging;
   sorting?: Array<CompanyNoteSort>;
 };
-
 
 export type CompanyNotesAggregateArgs = {
   filter?: InputMaybe<CompanyNoteAggregateFilter>;
@@ -216,11 +220,9 @@ export type CompanyAggregateGroupBy = {
   website?: Maybe<Scalars['String']['output']>;
 };
 
-
 export type CompanyAggregateGroupByCreatedAtArgs = {
   by?: GroupBy;
 };
-
 
 export type CompanyAggregateGroupByUpdatedAtArgs = {
   by?: GroupBy;
@@ -697,10 +699,7 @@ export type CompanyNoteSort = {
   nulls?: InputMaybe<SortNulls>;
 };
 
-export type CompanyNoteSortFields =
-  | 'createdAt'
-  | 'id'
-  | 'updatedAt';
+export type CompanyNoteSortFields = 'createdAt' | 'id' | 'updatedAt';
 
 export type CompanyNoteSubscriptionFilter = {
   and?: InputMaybe<Array<CompanyNoteSubscriptionFilter>>;
@@ -773,11 +772,7 @@ export type CompanyNotesSumAggregate = {
 };
 
 /** Company size */
-export type CompanySize =
-  | 'ENTERPRISE'
-  | 'LARGE'
-  | 'MEDIUM'
-  | 'SMALL';
+export type CompanySize = 'ENTERPRISE' | 'LARGE' | 'MEDIUM' | 'SMALL';
 
 export type CompanySort = {
   direction: SortDirection;
@@ -864,13 +859,11 @@ export type Contact = {
   updatedBy?: Maybe<User>;
 };
 
-
 export type ContactDealsArgs = {
   filter?: DealFilter;
   paging?: OffsetPaging;
   sorting?: Array<DealSort>;
 };
-
 
 export type ContactNotesArgs = {
   filter?: ContactNoteFilter;
@@ -1117,10 +1110,7 @@ export type ContactNoteSort = {
   nulls?: InputMaybe<SortNulls>;
 };
 
-export type ContactNoteSortFields =
-  | 'createdAt'
-  | 'id'
-  | 'updatedAt';
+export type ContactNoteSortFields = 'createdAt' | 'id' | 'updatedAt';
 
 export type ContactNoteSubscriptionFilter = {
   and?: InputMaybe<Array<ContactNoteSubscriptionFilter>>;
@@ -1171,10 +1161,7 @@ export type ContactSortFields =
   | 'updatedAt';
 
 /** Contact stage */
-export type ContactStage =
-  | 'CUSTOMER'
-  | 'LEAD'
-  | 'SALES_QUALIFIED_LEAD';
+export type ContactStage = 'CUSTOMER' | 'LEAD' | 'SALES_QUALIFIED_LEAD';
 
 export type ContactStageFilterComparison = {
   eq?: InputMaybe<ContactStage>;
@@ -1538,11 +1525,9 @@ export type DealAggregateGroupBy = {
   value?: Maybe<Scalars['Float']['output']>;
 };
 
-
 export type DealAggregateGroupByCreatedAtArgs = {
   by?: GroupBy;
 };
-
 
 export type DealAggregateGroupByUpdatedAtArgs = {
   by?: GroupBy;
@@ -1765,12 +1750,10 @@ export type DealStage = {
   updatedBy?: Maybe<User>;
 };
 
-
 export type DealStageDealsArgs = {
   filter?: DealFilter;
   sorting?: Array<DealSort>;
 };
-
 
 export type DealStageDealsAggregateArgs = {
   filter?: InputMaybe<DealAggregateFilter>;
@@ -1940,11 +1923,7 @@ export type DealStageSort = {
   nulls?: InputMaybe<SortNulls>;
 };
 
-export type DealStageSortFields =
-  | 'createdAt'
-  | 'id'
-  | 'title'
-  | 'updatedAt';
+export type DealStageSortFields = 'createdAt' | 'id' | 'title' | 'updatedAt';
 
 export type DealStageSubscriptionFilter = {
   and?: InputMaybe<Array<DealStageSubscriptionFilter>>;
@@ -2245,7 +2224,6 @@ export type Event = {
   updatedBy?: Maybe<User>;
 };
 
-
 export type EventParticipantsArgs = {
   filter?: UserFilter;
   sorting?: Array<UserSort>;
@@ -2260,7 +2238,6 @@ export type EventCategory = {
   updatedAt: Scalars['DateTime']['output'];
   updatedBy?: Maybe<User>;
 };
-
 
 export type EventCategoryEventsArgs = {
   filter?: EventCategoryFilter;
@@ -2505,11 +2482,7 @@ export type FloatFieldComparisonBetween = {
 };
 
 /** Group by */
-export type GroupBy =
-  | 'DAY'
-  | 'MONTH'
-  | 'WEEK'
-  | 'YEAR';
+export type GroupBy = 'DAY' | 'MONTH' | 'WEEK' | 'YEAR';
 
 export type IdFilterComparison = {
   eq?: InputMaybe<Scalars['ID']['input']>;
@@ -2668,406 +2641,325 @@ export type Mutation = {
   updateOneUser: User;
 };
 
-
 export type MutationCreateManyCompaniesArgs = {
   input: CreateManyCompaniesInput;
 };
-
 
 export type MutationCreateManyCompanyNotesArgs = {
   input: CreateManyCompanyNotesInput;
 };
 
-
 export type MutationCreateManyContactNotesArgs = {
   input: CreateManyContactNotesInput;
 };
-
 
 export type MutationCreateManyContactsArgs = {
   input: CreateManyContactsInput;
 };
 
-
 export type MutationCreateManyDealStagesArgs = {
   input: CreateManyDealStagesInput;
 };
-
 
 export type MutationCreateManyDealsArgs = {
   input: CreateManyDealsInput;
 };
 
-
 export type MutationCreateManyEventCategoriesArgs = {
   input: CreateManyEventCategoriesInput;
 };
-
 
 export type MutationCreateManyEventsArgs = {
   input: CreateManyEventsInput;
 };
 
-
 export type MutationCreateManyQuotesArgs = {
   input: CreateManyQuotesInput;
 };
-
 
 export type MutationCreateManyTaskCommentsArgs = {
   input: CreateManyTaskCommentsInput;
 };
 
-
 export type MutationCreateManyTaskStagesArgs = {
   input: CreateManyTaskStagesInput;
 };
-
 
 export type MutationCreateManyTasksArgs = {
   input: CreateManyTasksInput;
 };
 
-
 export type MutationCreateManyUsersArgs = {
   input: CreateManyUsersInput;
 };
-
 
 export type MutationCreateOneCompanyArgs = {
   input: CreateOneCompanyInput;
 };
 
-
 export type MutationCreateOneCompanyNoteArgs = {
   input: CreateOneCompanyNoteInput;
 };
-
 
 export type MutationCreateOneContactArgs = {
   input: CreateOneContactInput;
 };
 
-
 export type MutationCreateOneContactNoteArgs = {
   input: CreateOneContactNoteInput;
 };
-
 
 export type MutationCreateOneDealArgs = {
   input: CreateOneDealInput;
 };
 
-
 export type MutationCreateOneDealStageArgs = {
   input: CreateOneDealStageInput;
 };
-
 
 export type MutationCreateOneEventArgs = {
   input: CreateOneEventInput;
 };
 
-
 export type MutationCreateOneEventCategoryArgs = {
   input: CreateOneEventCategoryInput;
 };
-
 
 export type MutationCreateOneQuoteArgs = {
   input: CreateOneQuoteInput;
 };
 
-
 export type MutationCreateOneTaskArgs = {
   input: CreateOneTaskInput;
 };
-
 
 export type MutationCreateOneTaskCommentArgs = {
   input: CreateOneTaskCommentInput;
 };
 
-
 export type MutationCreateOneTaskStageArgs = {
   input: CreateOneTaskStageInput;
 };
-
 
 export type MutationCreateOneUserArgs = {
   input: CreateOneUserInput;
 };
 
-
 export type MutationDeleteManyCompaniesArgs = {
   input: DeleteManyCompaniesInput;
 };
-
 
 export type MutationDeleteManyCompanyNotesArgs = {
   input: DeleteManyCompanyNotesInput;
 };
 
-
 export type MutationDeleteManyContactNotesArgs = {
   input: DeleteManyContactNotesInput;
 };
-
 
 export type MutationDeleteManyContactsArgs = {
   input: DeleteManyContactsInput;
 };
 
-
 export type MutationDeleteManyDealStagesArgs = {
   input: DeleteManyDealStagesInput;
 };
-
 
 export type MutationDeleteManyDealsArgs = {
   input: DeleteManyDealsInput;
 };
 
-
 export type MutationDeleteManyEventCategoriesArgs = {
   input: DeleteManyEventCategoriesInput;
 };
-
 
 export type MutationDeleteManyEventsArgs = {
   input: DeleteManyEventsInput;
 };
 
-
 export type MutationDeleteManyQuotesArgs = {
   input: DeleteManyQuotesInput;
 };
-
 
 export type MutationDeleteManyTaskCommentsArgs = {
   input: DeleteManyTaskCommentsInput;
 };
 
-
 export type MutationDeleteManyTaskStagesArgs = {
   input: DeleteManyTaskStagesInput;
 };
-
 
 export type MutationDeleteManyTasksArgs = {
   input: DeleteManyTasksInput;
 };
 
-
 export type MutationDeleteManyUsersArgs = {
   input: DeleteManyUsersInput;
 };
-
 
 export type MutationDeleteOneCompanyArgs = {
   input: DeleteOneCompanyInput;
 };
 
-
 export type MutationDeleteOneCompanyNoteArgs = {
   input: DeleteOneCompanyNoteInput;
 };
-
 
 export type MutationDeleteOneContactArgs = {
   input: DeleteOneContactInput;
 };
 
-
 export type MutationDeleteOneContactNoteArgs = {
   input: DeleteOneContactNoteInput;
 };
-
 
 export type MutationDeleteOneDealArgs = {
   input: DeleteOneDealInput;
 };
 
-
 export type MutationDeleteOneDealStageArgs = {
   input: DeleteOneDealStageInput;
 };
-
 
 export type MutationDeleteOneEventArgs = {
   input: DeleteOneEventInput;
 };
 
-
 export type MutationDeleteOneEventCategoryArgs = {
   input: DeleteOneEventCategoryInput;
 };
-
 
 export type MutationDeleteOneQuoteArgs = {
   input: DeleteOneQuoteInput;
 };
 
-
 export type MutationDeleteOneTaskArgs = {
   input: DeleteOneTaskInput;
 };
-
 
 export type MutationDeleteOneTaskCommentArgs = {
   input: DeleteOneTaskCommentInput;
 };
 
-
 export type MutationDeleteOneTaskStageArgs = {
   input: DeleteOneTaskStageInput;
 };
-
 
 export type MutationDeleteOneUserArgs = {
   input: DeleteOneUserInput;
 };
 
-
 export type MutationLoginArgs = {
   loginInput: LoginInput;
 };
-
 
 export type MutationRefreshTokenArgs = {
   refreshToken: Scalars['String']['input'];
 };
 
-
 export type MutationRegisterArgs = {
   registerInput: RegisterInput;
 };
-
 
 export type MutationUpdateManyCompaniesArgs = {
   input: UpdateManyCompaniesInput;
 };
 
-
 export type MutationUpdateManyCompanyNotesArgs = {
   input: UpdateManyCompanyNotesInput;
 };
-
 
 export type MutationUpdateManyContactNotesArgs = {
   input: UpdateManyContactNotesInput;
 };
 
-
 export type MutationUpdateManyContactsArgs = {
   input: UpdateManyContactsInput;
 };
-
 
 export type MutationUpdateManyDealStagesArgs = {
   input: UpdateManyDealStagesInput;
 };
 
-
 export type MutationUpdateManyDealsArgs = {
   input: UpdateManyDealsInput;
 };
-
 
 export type MutationUpdateManyEventCategoriesArgs = {
   input: UpdateManyEventCategoriesInput;
 };
 
-
 export type MutationUpdateManyEventsArgs = {
   input: UpdateManyEventsInput;
 };
-
 
 export type MutationUpdateManyQuotesArgs = {
   input: UpdateManyQuotesInput;
 };
 
-
 export type MutationUpdateManyTaskCommentsArgs = {
   input: UpdateManyTaskCommentsInput;
 };
-
 
 export type MutationUpdateManyTaskStagesArgs = {
   input: UpdateManyTaskStagesInput;
 };
 
-
 export type MutationUpdateManyTasksArgs = {
   input: UpdateManyTasksInput;
 };
-
 
 export type MutationUpdateManyUsersArgs = {
   input: UpdateManyUsersInput;
 };
 
-
 export type MutationUpdateOneCompanyArgs = {
   input: UpdateOneCompanyInput;
 };
-
 
 export type MutationUpdateOneCompanyNoteArgs = {
   input: UpdateOneCompanyNoteInput;
 };
 
-
 export type MutationUpdateOneContactArgs = {
   input: UpdateOneContactInput;
 };
-
 
 export type MutationUpdateOneContactNoteArgs = {
   input: UpdateOneContactNoteInput;
 };
 
-
 export type MutationUpdateOneDealArgs = {
   input: UpdateOneDealInput;
 };
-
 
 export type MutationUpdateOneDealStageArgs = {
   input: UpdateOneDealStageInput;
 };
 
-
 export type MutationUpdateOneEventArgs = {
   input: UpdateOneEventInput;
 };
-
 
 export type MutationUpdateOneEventCategoryArgs = {
   input: UpdateOneEventCategoryInput;
 };
 
-
 export type MutationUpdateOneQuoteArgs = {
   input: UpdateOneQuoteInput;
 };
-
 
 export type MutationUpdateOneTaskArgs = {
   input: UpdateOneTaskInput;
 };
 
-
 export type MutationUpdateOneTaskCommentArgs = {
   input: UpdateOneTaskCommentInput;
 };
 
-
 export type MutationUpdateOneTaskStageArgs = {
   input: UpdateOneTaskStageInput;
 };
-
 
 export type MutationUpdateOneUserArgs = {
   input: UpdateOneUserInput;
@@ -3143,11 +3035,9 @@ export type Query = {
   users: UserConnection;
 };
 
-
 export type QueryAuditArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryAuditsArgs = {
   filter?: AuditFilter;
@@ -3155,28 +3045,23 @@ export type QueryAuditsArgs = {
   sorting?: Array<AuditSort>;
 };
 
-
 export type QueryCompaniesArgs = {
   filter?: CompanyFilter;
   paging?: OffsetPaging;
   sorting?: Array<CompanySort>;
 };
 
-
 export type QueryCompanyArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryCompanyAggregateArgs = {
   filter?: InputMaybe<CompanyAggregateFilter>;
 };
 
-
 export type QueryCompanyNoteArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryCompanyNotesArgs = {
   filter?: CompanyNoteFilter;
@@ -3184,16 +3069,13 @@ export type QueryCompanyNotesArgs = {
   sorting?: Array<CompanyNoteSort>;
 };
 
-
 export type QueryContactArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type QueryContactNoteArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryContactNotesArgs = {
   filter?: ContactNoteFilter;
@@ -3201,28 +3083,23 @@ export type QueryContactNotesArgs = {
   sorting?: Array<ContactNoteSort>;
 };
 
-
 export type QueryContactsArgs = {
   filter?: ContactFilter;
   paging?: OffsetPaging;
   sorting?: Array<ContactSort>;
 };
 
-
 export type QueryDealArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryDealAggregateArgs = {
   filter?: InputMaybe<DealAggregateFilter>;
 };
 
-
 export type QueryDealStageArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryDealStagesArgs = {
   filter?: DealStageFilter;
@@ -3230,18 +3107,15 @@ export type QueryDealStagesArgs = {
   sorting?: Array<DealStageSort>;
 };
 
-
 export type QueryDealsArgs = {
   filter?: DealFilter;
   paging?: OffsetPaging;
   sorting?: Array<DealSort>;
 };
 
-
 export type QueryEventArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryEventCategoriesArgs = {
   filter?: EventCategoryFilter;
@@ -3249,11 +3123,9 @@ export type QueryEventCategoriesArgs = {
   sorting?: Array<EventCategorySort>;
 };
 
-
 export type QueryEventCategoryArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryEventsArgs = {
   filter?: EventFilter;
@@ -3261,11 +3133,9 @@ export type QueryEventsArgs = {
   sorting?: Array<EventSort>;
 };
 
-
 export type QueryQuoteArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryQuotesArgs = {
   filter?: QuoteFilter;
@@ -3273,21 +3143,17 @@ export type QueryQuotesArgs = {
   sorting?: Array<QuoteSort>;
 };
 
-
 export type QueryTaskArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryTaskAggregateArgs = {
   filter?: InputMaybe<TaskAggregateFilter>;
 };
 
-
 export type QueryTaskCommentArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryTaskCommentsArgs = {
   filter?: TaskCommentFilter;
@@ -3295,16 +3161,13 @@ export type QueryTaskCommentsArgs = {
   sorting?: Array<TaskCommentSort>;
 };
 
-
 export type QueryTaskStageArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type QueryTaskStageAggregateArgs = {
   filter?: InputMaybe<TaskStageAggregateFilter>;
 };
-
 
 export type QueryTaskStagesArgs = {
   filter?: TaskStageFilter;
@@ -3312,18 +3175,15 @@ export type QueryTaskStagesArgs = {
   sorting?: Array<TaskStageSort>;
 };
 
-
 export type QueryTasksArgs = {
   filter?: TaskFilter;
   paging?: OffsetPaging;
   sorting?: Array<TaskSort>;
 };
 
-
 export type QueryUserArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryUsersArgs = {
   filter?: UserFilter;
@@ -3480,10 +3340,7 @@ export type QuoteSortFields =
   | 'updatedAt';
 
 /** Quote status */
-export type QuoteStatus =
-  | 'ACCEPTED'
-  | 'DRAFT'
-  | 'SENT';
+export type QuoteStatus = 'ACCEPTED' | 'DRAFT' | 'SENT';
 
 export type QuoteStatusFilterComparison = {
   eq?: InputMaybe<QuoteStatus>;
@@ -3541,21 +3398,13 @@ export type RegisterInput = {
 };
 
 /** Role */
-export type Role =
-  | 'ADMIN'
-  | 'SALES_INTERN'
-  | 'SALES_MANAGER'
-  | 'SALES_PERSON';
+export type Role = 'ADMIN' | 'SALES_INTERN' | 'SALES_MANAGER' | 'SALES_PERSON';
 
 /** Sort Directions */
-export type SortDirection =
-  | 'ASC'
-  | 'DESC';
+export type SortDirection = 'ASC' | 'DESC';
 
 /** Sort Nulls Options */
-export type SortNulls =
-  | 'NULLS_FIRST'
-  | 'NULLS_LAST';
+export type SortNulls = 'NULLS_FIRST' | 'NULLS_LAST';
 
 export type StringFieldComparison = {
   eq?: InputMaybe<Scalars['String']['input']>;
@@ -3647,211 +3496,169 @@ export type Subscription = {
   updatedOneUser: User;
 };
 
-
 export type SubscriptionCreatedAuditArgs = {
   input?: InputMaybe<CreateAuditSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionCreatedCompanyArgs = {
   input?: InputMaybe<CreateCompanySubscriptionFilterInput>;
 };
 
-
 export type SubscriptionCreatedCompanyNoteArgs = {
   input?: InputMaybe<CreateCompanyNoteSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionCreatedContactArgs = {
   input?: InputMaybe<CreateContactSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionCreatedContactNoteArgs = {
   input?: InputMaybe<CreateContactNoteSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionCreatedDealArgs = {
   input?: InputMaybe<CreateDealSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionCreatedDealStageArgs = {
   input?: InputMaybe<CreateDealStageSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionCreatedEventArgs = {
   input?: InputMaybe<CreateEventSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionCreatedEventCategoryArgs = {
   input?: InputMaybe<CreateEventCategorySubscriptionFilterInput>;
 };
-
 
 export type SubscriptionCreatedQuoteArgs = {
   input?: InputMaybe<CreateQuoteSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionCreatedTaskArgs = {
   input?: InputMaybe<CreateTaskSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionCreatedTaskCommentArgs = {
   input?: InputMaybe<CreateTaskCommentSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionCreatedTaskStageArgs = {
   input?: InputMaybe<CreateTaskStageSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionCreatedUserArgs = {
   input?: InputMaybe<CreateUserSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionDeletedOneAuditArgs = {
   input?: InputMaybe<DeleteOneAuditSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionDeletedOneCompanyArgs = {
   input?: InputMaybe<DeleteOneCompanySubscriptionFilterInput>;
 };
 
-
 export type SubscriptionDeletedOneCompanyNoteArgs = {
   input?: InputMaybe<DeleteOneCompanyNoteSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionDeletedOneContactArgs = {
   input?: InputMaybe<DeleteOneContactSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionDeletedOneContactNoteArgs = {
   input?: InputMaybe<DeleteOneContactNoteSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionDeletedOneDealArgs = {
   input?: InputMaybe<DeleteOneDealSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionDeletedOneDealStageArgs = {
   input?: InputMaybe<DeleteOneDealStageSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionDeletedOneEventArgs = {
   input?: InputMaybe<DeleteOneEventSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionDeletedOneEventCategoryArgs = {
   input?: InputMaybe<DeleteOneEventCategorySubscriptionFilterInput>;
 };
-
 
 export type SubscriptionDeletedOneQuoteArgs = {
   input?: InputMaybe<DeleteOneQuoteSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionDeletedOneTaskArgs = {
   input?: InputMaybe<DeleteOneTaskSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionDeletedOneTaskCommentArgs = {
   input?: InputMaybe<DeleteOneTaskCommentSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionDeletedOneTaskStageArgs = {
   input?: InputMaybe<DeleteOneTaskStageSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionDeletedOneUserArgs = {
   input?: InputMaybe<DeleteOneUserSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionUpdatedOneAuditArgs = {
   input?: InputMaybe<UpdateOneAuditSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionUpdatedOneCompanyArgs = {
   input?: InputMaybe<UpdateOneCompanySubscriptionFilterInput>;
 };
 
-
 export type SubscriptionUpdatedOneCompanyNoteArgs = {
   input?: InputMaybe<UpdateOneCompanyNoteSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionUpdatedOneContactArgs = {
   input?: InputMaybe<UpdateOneContactSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionUpdatedOneContactNoteArgs = {
   input?: InputMaybe<UpdateOneContactNoteSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionUpdatedOneDealArgs = {
   input?: InputMaybe<UpdateOneDealSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionUpdatedOneDealStageArgs = {
   input?: InputMaybe<UpdateOneDealStageSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionUpdatedOneEventArgs = {
   input?: InputMaybe<UpdateOneEventSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionUpdatedOneEventCategoryArgs = {
   input?: InputMaybe<UpdateOneEventCategorySubscriptionFilterInput>;
 };
-
 
 export type SubscriptionUpdatedOneQuoteArgs = {
   input?: InputMaybe<UpdateOneQuoteSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionUpdatedOneTaskArgs = {
   input?: InputMaybe<UpdateOneTaskSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionUpdatedOneTaskCommentArgs = {
   input?: InputMaybe<UpdateOneTaskCommentSubscriptionFilterInput>;
 };
 
-
 export type SubscriptionUpdatedOneTaskStageArgs = {
   input?: InputMaybe<UpdateOneTaskStageSubscriptionFilterInput>;
 };
-
 
 export type SubscriptionUpdatedOneUserArgs = {
   input?: InputMaybe<UpdateOneUserSubscriptionFilterInput>;
@@ -3876,24 +3683,20 @@ export type Task = {
   usersAggregate: Array<TaskUsersAggregateResponse>;
 };
 
-
 export type TaskCommentsArgs = {
   filter?: TaskCommentFilter;
   paging?: OffsetPaging;
   sorting?: Array<TaskCommentSort>;
 };
 
-
 export type TaskCommentsAggregateArgs = {
   filter?: InputMaybe<TaskCommentAggregateFilter>;
 };
-
 
 export type TaskUsersArgs = {
   filter?: UserFilter;
   sorting?: Array<UserSort>;
 };
-
 
 export type TaskUsersAggregateArgs = {
   filter?: InputMaybe<UserAggregateFilter>;
@@ -3923,16 +3726,13 @@ export type TaskAggregateGroupBy = {
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
-
 export type TaskAggregateGroupByCreatedAtArgs = {
   by?: GroupBy;
 };
 
-
 export type TaskAggregateGroupByDueDateArgs = {
   by?: GroupBy;
 };
-
 
 export type TaskAggregateGroupByUpdatedAtArgs = {
   by?: GroupBy;
@@ -4043,10 +3843,7 @@ export type TaskCommentSort = {
   nulls?: InputMaybe<SortNulls>;
 };
 
-export type TaskCommentSortFields =
-  | 'createdAt'
-  | 'id'
-  | 'updatedAt';
+export type TaskCommentSortFields = 'createdAt' | 'id' | 'updatedAt';
 
 export type TaskCommentSubscriptionFilter = {
   and?: InputMaybe<Array<TaskCommentSubscriptionFilter>>;
@@ -4267,12 +4064,10 @@ export type TaskStage = {
   updatedBy?: Maybe<User>;
 };
 
-
 export type TaskStageTasksArgs = {
   filter?: TaskFilter;
   sorting?: Array<TaskSort>;
 };
-
 
 export type TaskStageTasksAggregateArgs = {
   filter?: InputMaybe<TaskAggregateFilter>;
@@ -4294,11 +4089,9 @@ export type TaskStageAggregateGroupBy = {
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
-
 export type TaskStageAggregateGroupByCreatedAtArgs = {
   by?: GroupBy;
 };
-
 
 export type TaskStageAggregateGroupByUpdatedAtArgs = {
   by?: GroupBy;
@@ -4398,11 +4191,7 @@ export type TaskStageSort = {
   nulls?: InputMaybe<SortNulls>;
 };
 
-export type TaskStageSortFields =
-  | 'createdAt'
-  | 'id'
-  | 'title'
-  | 'updatedAt';
+export type TaskStageSortFields = 'createdAt' | 'id' | 'title' | 'updatedAt';
 
 export type TaskStageSubscriptionFilter = {
   and?: InputMaybe<Array<TaskStageSubscriptionFilter>>;
@@ -4874,13 +4663,11 @@ export type User = {
   updatedBy?: Maybe<User>;
 };
 
-
 export type UserCompaniesArgs = {
   filter?: CompanyFilter;
   paging?: OffsetPaging;
   sorting?: Array<CompanySort>;
 };
-
 
 export type UserContactsArgs = {
   filter?: ContactFilter;
@@ -4888,20 +4675,17 @@ export type UserContactsArgs = {
   sorting?: Array<ContactSort>;
 };
 
-
 export type UserDealsArgs = {
   filter?: DealFilter;
   paging?: OffsetPaging;
   sorting?: Array<DealSort>;
 };
 
-
 export type UserEventsArgs = {
   filter?: EventFilter;
   paging?: OffsetPaging;
   sorting?: Array<EventSort>;
 };
-
 
 export type UserTasksArgs = {
   filter?: TaskFilter;
