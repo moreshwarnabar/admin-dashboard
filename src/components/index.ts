@@ -4,6 +4,7 @@ import TotalCountCard from './home/total-count-card';
 import LatestActivities from './home/latest-activities';
 
 import UpcomingEventsSkeleton from './skeleton/upcoming-events';
+import LatestActivitiesSkeleton from './skeleton/latest-activities';
 
 export {
   UpcomingEvents,
@@ -11,4 +12,5 @@ export {
   TotalCountCard,
   LatestActivities,
   UpcomingEventsSkeleton,
+  LatestActivitiesSkeleton,
 };
