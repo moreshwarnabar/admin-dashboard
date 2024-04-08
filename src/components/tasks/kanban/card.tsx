@@ -9,6 +9,7 @@ import {
   EyeOutlined,
   MoreOutlined,
 } from '@ant-design/icons';
+import { useDelete, useNavigation } from '@refinedev/core';
 import {
   Button,
   Card,
@@ -39,7 +40,9 @@ type Props = {
 const ProjectCard = ({ id, title, dueDate, users }: Props) => {
   const { token } = theme.useToken();
 
-  const edit = () => {};
+  const { edit } = useNavigation();
+
+  const { mutate: deleteItem } = useDelete();
 
   const dropDownItems = useMemo(() => {
     const dropDownItems: MenuProps['items'] = [
@@ -47,14 +50,15 @@ const ProjectCard = ({ id, title, dueDate, users }: Props) => {
         label: 'View Card',
         key: '1',
         icon: <EyeOutlined />,
-        onClick: () => edit(),
+        onClick: () => edit('tasks', id, 'replace'),
       },
       {
         danger: true,
         label: 'Delete Card',
         key: '2',
         icon: <DeleteOutlined />,
-        onClick: () => {},
+        onClick: () =>
+          deleteItem({ resource: 'tasks', id, meta: { operation: 'task' } }),
       },
     ];
 
@@ -84,11 +88,15 @@ const ProjectCard = ({ id, title, dueDate, users }: Props) => {
       <Card
         size="small"
         title={<Text ellipsis={{ tooltip: title }}>{title}</Text>}
-        onClick={() => edit}
+        onClick={() => edit('tasks', id, 'replace')}
         extra={
           <Dropdown
             trigger={['click']}
-            menu={{ items: dropDownItems }}
+            menu={{
+              items: dropDownItems,
+              onPointerDown: e => e.stopPropagation(),
+              onClick: e => e.domEvent.stopPropagation(),
+            }}
             placement="bottom"
             arrow={{ pointAtCenter: true }}
           >
@@ -161,5 +169,5 @@ export const ProjectCardMemo = memo(
     prev.title === next.title &&
     prev.dueDate === next.dueDate &&
     prev.users?.length === next.users?.length &&
-    prev.updatedAt === next.updatedAt
+    prev.updatedAt === next.updatedAt,
 );
