@@ -15,6 +15,8 @@ import {
   Create,
   EditPage,
   TaskList,
+  CreateTask,
+  EditTask,
 } from './pages';
 
 import routerBindings, {
@@ -71,8 +73,16 @@ function App() {
                     <Route path="create" element={<Create />} />
                     <Route path="edit/:id" element={<EditPage />} />
                   </Route>
-                  <Route path="/tasks">
-                    <Route index element={<TaskList />} />
+                  <Route
+                    path="/tasks"
+                    element={
+                      <TaskList>
+                        <Outlet />
+                      </TaskList>
+                    }
+                  >
+                    <Route path="new" element={<CreateTask />} />
+                    <Route path="edit/:id" element={<EditTask />} />
                   </Route>
                 </Route>
               </Routes>
