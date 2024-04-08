@@ -88,11 +88,15 @@ const ProjectCard = ({ id, title, dueDate, users }: Props) => {
       <Card
         size="small"
         title={<Text ellipsis={{ tooltip: title }}>{title}</Text>}
-        onClick={() => edit}
+        onClick={() => edit('tasks', id, 'replace')}
         extra={
           <Dropdown
             trigger={['click']}
-            menu={{ items: dropDownItems }}
+            menu={{
+              items: dropDownItems,
+              onPointerDown: e => e.stopPropagation(),
+              onClick: e => e.domEvent.stopPropagation(),
+            }}
             placement="bottom"
             arrow={{ pointAtCenter: true }}
           >
