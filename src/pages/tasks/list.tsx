@@ -26,7 +26,7 @@ export const TaskList = ({ children }: React.PropsWithChildren) => {
       {
         field: 'title',
         operator: 'in',
-        value: ['TODO', 'IN_PROGRESS', 'IN_REVIEW', 'DONE'],
+        value: ['TODO', 'IN PROGRESS', 'IN REVIEW', 'DONE'],
       },
     ],
     sorters: [{ field: 'createdAt', order: 'asc' }],
