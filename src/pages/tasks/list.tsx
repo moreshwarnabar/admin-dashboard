@@ -11,7 +11,7 @@ import { UPDATE_TASK_STAGE_MUTATION } from '@/graphql/mutations';
 import { TASKS_QUERY, TASK_STAGES_QUERY } from '@/graphql/queries';
 import { TaskStagesQuery, TasksQuery } from '@/graphql/types';
 import { DragEndEvent } from '@dnd-kit/core';
-import { useList, useUpdate } from '@refinedev/core';
+import { useList, useNavigation, useUpdate } from '@refinedev/core';
 import { GetFieldsFromList } from '@refinedev/nestjs-query';
 import React from 'react';
 
@@ -19,6 +19,7 @@ type Task = GetFieldsFromList<TasksQuery>;
 type TaskStage = GetFieldsFromList<TaskStagesQuery> & { tasks: Task[] };
 
 export const TaskList = ({ children }: React.PropsWithChildren) => {
+  const { replace } = useNavigation();
   const { data: stages, isLoading: isLoadingStages } = useList<TaskStage>({
     resource: 'taskStages',
     filters: [
@@ -61,7 +62,14 @@ export const TaskList = ({ children }: React.PropsWithChildren) => {
     return { unassignedStage, columns: grouped };
   }, [stages, tasks]);
 
-  const handleAddCard = (args: { stageId: string }) => {};
+  const handleAddCard = (args: { stageId: string }) => {
+    const path =
+      args.stageId === 'unassigned'
+        ? '/tasks/new'
+        : `/tasks/new?stageId=${args.stageId}`;
+
+    replace(path);
+  };
 
   const handleOnDragEnd = (event: DragEndEvent) => {
     let stageId = event.over?.id as undefined | string | null;
