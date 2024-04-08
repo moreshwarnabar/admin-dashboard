@@ -5,6 +5,8 @@ import LatestActivities from './home/latest-activities';
 
 import UpcomingEventsSkeleton from './skeleton/upcoming-events';
 import LatestActivitiesSkeleton from './skeleton/latest-activities';
+import KanbanColumnSkeleton from './skeleton/kanban';
+import ProjectCardSkeleton from './skeleton/project-card';
 
 export {
   UpcomingEvents,
@@ -13,4 +15,6 @@ export {
   LatestActivities,
   UpcomingEventsSkeleton,
   LatestActivitiesSkeleton,
+  KanbanColumnSkeleton,
+  ProjectCardSkeleton,
 };
